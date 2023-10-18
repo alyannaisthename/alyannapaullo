@@ -1,0 +1,83 @@
+package linked_list;
+
+
+import java.util.Scanner;
+import java.util.LinkedList;
+
+public class linked_list {
+	
+    public static void main(String[] args) {
+        LinkedList<String> linkedList = new LinkedList<>();
+        Scanner scanner = new Scanner(System.in);
+        
+        while (true) {
+            System.out.println("Linked List Menu:");
+            System.out.println("1. Add an item");
+            System.out.println("2. Display items");
+            System.out.println("3. Update an item");
+            System.out.println("4. Delete an item");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice: ");
+            
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume the newline character
+            
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter an item to add: ");
+                    String newItem = scanner.nextLine();
+                    linkedList.add(newItem);
+                    System.out.println("Item added: " + newItem);
+                    break;
+                case 2:
+                    if (linkedList.isEmpty()) {
+                        System.out.println("The linked list is empty.");
+                    } else {
+                        System.out.println("Items in the linked list:");
+                        for (String item : linkedList) {
+                            System.out.println(item);
+                        }
+                    }
+                    break;
+                case 3:
+                    if (linkedList.isEmpty()) {
+                        System.out.println("The linked list is empty.");
+                    } else {
+                        System.out.print("Enter the index of the item to update: ");
+                        int index = scanner.nextInt();
+                        scanner.nextLine(); // Consume the newline character
+                        if (index >= 0 && index < linkedList.size()) {
+                            System.out.print("Enter the new item: ");
+                            String updatedItem = scanner.nextLine();
+                            linkedList.set(index, updatedItem);
+                            System.out.println("Item updated.");
+                        } else {
+                            System.out.println("Invalid index.");
+                        }
+                    }
+                    break;
+                case 4:
+                    if (linkedList.isEmpty()) {
+                        System.out.println("The linked list is empty.");
+                    } else {
+                        System.out.print("Enter the index of the item to delete: ");
+                        int deleteIndex = scanner.nextInt();
+                        scanner.nextLine(); // Consume the newline character
+                        if (deleteIndex >= 0 && deleteIndex < linkedList.size()) {
+                            linkedList.remove(deleteIndex);
+                            System.out.println("Item deleted.");
+                        } else {
+                            System.out.println("Invalid index.");
+                        }
+                    }
+                    break;
+                case 5:
+                    System.out.println("Exiting the program.");
+                    scanner.close();
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
+        }
+    }
+}
